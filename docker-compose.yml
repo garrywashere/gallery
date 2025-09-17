@@ -1,0 +1,25 @@
+services:
+  gallery:
+    container_name: gallery
+    build: .
+    image: gallery:local
+    environment:
+      - TITLE=${TITLE}
+      - EMAIL=${EMAIL}
+      - AUTHOR_NAME=${AUTHOR_NAME}
+      - AUTHOR_EMAIL=${AUTHOR_EMAIL}
+      - AUTHOR_WEBSITE=${AUTHOR_WEBSITE}
+      - DESCRIPTION=${DESCRIPTION}
+      - BASEURL=${BASEURL}
+      - URL=${URL}
+      - SHOW_RSS_FEED=${SHOW_RSS_FEED}
+      - SHOW_OFFICIAL_GITHUB=${SHOW_OFFICIAL_GITHUB}
+      - TWITTER_USERNAME=${TWITTER_USERNAME}
+      - INSTAGRAM_USERNAME=${INSTAGRAM_USERNAME}
+      - ALLOW_ORIGINAL_DOWNLOAD=${ALLOW_ORIGINAL_DOWNLOAD}
+    volumes:
+      - ${PHOTO_PATH}:/photo-stream/photos
+    env_file: .env
+    ports:
+      - "4000:4000"
+    restart: unless-stopped

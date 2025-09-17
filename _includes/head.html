@@ -1,0 +1,37 @@
+<head>
+	<meta charset="utf-8">
+	<meta name="google" content="notranslate" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	{% if site.env.ALLOW_INDEXING == "0" %}
+	<meta name="robots" content="noindex" />
+	{% endif %}
+	<title data-title="{{ site.env.TITLE }}">{{ page.title | default: site.env.TITLE }}</title>
+	<link rel="alternate" type="application/rss+xml" title="RSS Feed" href="{{ site.env.URL }}/feed.xml">
+	<meta property="og:title" content="{{ page.title | default: site.env.TITLE }}">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="{{ site.env.URL }}">
+	<meta property="og:image" content="{{ site.env.URL }}/{{ page.images[0].name | uri_escape | processed_path: 'large' | default: 'social-preview.png' }}">
+	<meta property="og:site_name" content="{{ site.env.TITLE }}">
+	<meta property="og:description" content="{{ site.env.DESCRIPTION }}">
+	<meta name="thumbnail" content="{{ site.env.URL }}/{{ page.images[0].name | uri_escape | processed_path: 'large' | default: 'social-preview.png' }}">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="{{ site.env.TWITTER_USERNAME }}">
+	<meta name="twitter:title" content="{{ page.title | default: site.env.TITLE }}">
+	<meta name="twitter:description" content="{{ site.env.DESCRIPTION }}">
+	<meta name="twitter:image:src" content="{{ site.env.URL }}/{{ page.images[0].name | uri_escape | processed_path: 'large' | default: 'social-preview.png' }}">
+	<meta name="description" content="{{ site.env.DESCRIPTION }}">
+	<script type="text/javascript" src="{{ '/js/lazy-loading.js' | relative_url }}"></script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap">
+	<link rel="stylesheet" type="text/css" media="screen" href="{{ '/css/master.css' | relative_url }}" />
+	{% if site.env.ALLOW_IMAGE_SHARING == "1" %}
+	<link rel="stylesheet" type="text/css" href="{{ '/css/toastify.min.css' | relative_url }}">
+	{% endif %}
+	<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+	<meta name="apple-mobile-web-app-title" content="Gallery" />
+	<link rel="manifest" href="/site.webmanifest" />
+	<meta name="msapplication-TileColor" content="#603cba">
+	<meta name="theme-color" content="#ffffff">
+</head>
