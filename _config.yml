@@ -14,33 +14,33 @@
 #
 # Site settings
 # These are used to personalize your new site and can be found in the .env file.
-# If you look in the HTML files, you will see them accessed via {{ site.env.TITLE }}, 
+# If you look in the HTML files, you will see them accessed via {{ site.env.TITLE }},
 # {{ site.env.EMAIL }}, and so on. You can create any custom variable you would like,
 # and they will be accessible in the templates via {{ site.env.MYVARIABLE }}.
 #
 # Build settings
 plugins:
-  - jekyll-dotenv
+    - jekyll-dotenv
 
 image_processing:
-  large:
-    source: photos/original
-    destination: photos/large
-    resize_to_limit: [2048, 2048]
-    saver:
-      strip: true
-  thumbnail:
-    source: photos/original
-    destination: photos/thumbnail
-    resize_to_limit: [640, 640]
-    saver:
-      strip: true
-  tint:
-    source: photos/original
-    destination: photos/tint
-    resize_to_fill: [1,1]
-    saver:
-      strip: true
+    large:
+        source: photos/original
+        destination: photos/large
+        resize_to_limit: [2048, 2048]
+        saver:
+            strip: true
+    thumbnail:
+        source: photos/original
+        destination: photos/thumbnail
+        resize_to_limit: [640, 640]
+        saver:
+            strip: true
+    tint:
+        source: photos/original
+        destination: photos/tint
+        resize_to_fill: [1, 1]
+        saver:
+            strip: true
 
 # Exclude from processing.
 # The following items will not be processed, by default.

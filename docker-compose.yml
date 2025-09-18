@@ -1,8 +1,9 @@
 services:
   gallery:
-    container_name: gallery
     build: .
     image: gallery:local
+    container_name: gallery
+    restart: unless-stopped
     environment:
       - TITLE=${TITLE}
       - EMAIL=${EMAIL}
@@ -20,6 +21,3 @@ services:
     volumes:
       - ${PHOTO_PATH}:/photo-stream/photos
     env_file: .env
-    ports:
-      - "4000:4000"
-    restart: unless-stopped
