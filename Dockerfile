@@ -1,9 +1,8 @@
-ARG  BASE_IMAGE=ruby:3.1.3-alpine3.17
-FROM ${BASE_IMAGE}
+FROM ruby:3.1.3-alpine3.17 AS builder
 
-RUN apk update && apk upgrade && \
-    apk add --no-cache \
-    build-base \
+RUN apk add --no-cache --virtual .build-deps \
+    build-base git \
+    && apk add --no-cache \
     glib-dev \
     exiftool \
     libexif-dev \
@@ -13,25 +12,21 @@ RUN apk update && apk upgrade && \
     libpng \
     libgsf-dev \
     vips \
-    git \
-    rsync \
-    lftp \
-    openssh \
     perl \
-    imagemagick \
-    imagemagick-dev && \
-    rm -rf /var/cache/apk/*
+    imagemagick
 
 WORKDIR /photo-stream
 
 COPY Gemfile Gemfile.lock ./
 
-RUN gem install bundler jekyll && \
-    bundle config --local build.sassc --disable-march-tune-native && \
-    bundle install
+RUN gem install --no-document bundler jekyll && \
+    bundle config set --local build.sassc --disable-march-tune-native && \
+    bundle install --without development test --jobs=$(nproc) && \
+    rm -rf /usr/local/bundle/cache/*
 
 COPY . .
 
-EXPOSE 4000
+RUN apk del .build-deps && \
+    rm -rf /var/cache/apk/*
 
-ENTRYPOINT ["bundle", "exec", "jekyll", "serve", "--host", "0.0.0.0"]
+CMD ["bundle", "exec", "jekyll", "build", "--destination", "/photo-stream/_site"]

@@ -27,6 +27,7 @@ _site
 vendor
 
 # Unneeded files in image
+nginx.conf
 photos
 README.md
 LICENSE*
