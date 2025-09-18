@@ -3,6 +3,8 @@
 ![](https://img.shields.io/github/repo-size/garrywashere/gallery)
 ![](https://uptime.garry.cloud/api/badge/7/status)
 
+![](/screenshot.png)
+
 ## Description
 
 My online gallery, an adapted version of the [photo-stream](https://github.com/waschinski/photo-stream) project by [Andreas Waschinski](https://github.com/waschinski)
