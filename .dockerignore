@@ -1,7 +1,33 @@
+# Git
 .git
 .gitignore
-photos
-Dockerfile
-README.md
-LICENSE
+.gitattributes
+
+# Docker / Compose
+.dockerignore
+docker-compose.yml
+
+# Local development
+.vscode
+.idea
+.nova
+*.swp
+*~
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Jekyll build/cache
+_site
+.jekyll-cache
+.jekyll-metadata
+.sass-cache
+.bundle
 vendor
+
+# Unneeded files in image
+photos
+README.md
+LICENSE*
+Procfile
